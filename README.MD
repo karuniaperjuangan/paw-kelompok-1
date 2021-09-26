@@ -11,6 +11,6 @@ Dengan adanya Kapecal ini kami berusaha untuk mengisi gap tersebut dan mempermud
 
 - Rizky Alif R. - 19/446785/TK/49890
 - Karunia Perjuangan - 20/456368/TK/50498
-- Raihan Ramadhan - 19/444066/TK/49262
+- Raihan Ramadhan Hanif Mintarso - 19/444066/TK/49262
 - Ardhianto Raharjo - 19/444038/TK/49234
 - Aldo Arya Saka Mukti - 19/439807/TK/48537
