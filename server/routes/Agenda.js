@@ -3,6 +3,6 @@ import { getAgenda, createAgenda } from "../controllers/Agenda.js";
 const router = express.Router();
 
 router.get('/', getAgenda);
-router.get('/', createAgenda);
+router.post('/create', createAgenda);
 
 export default router;
