@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RightSidebar from "../components/RightSidebar";
-import AgendaCard from "../components/AgendaCard";
+import AgendaList from "../components/AgendaList/AgendaList";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
@@ -20,72 +20,7 @@ export default function Beranda() {
       <div className="agenda">
         <div className="month">{/* TODO: Add month selector */}</div>
         <div className="agenda-list">
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TI"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TB"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit."
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
-          <div className="agenda-item">
-            <AgendaCard
-              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
-              prodi="TE"
-            />
-          </div>
+          <AgendaList />
         </div>
         <div className="add-new-agenda"></div>
       </div>
@@ -103,15 +38,11 @@ const BerandaContainer = styled.div`
   background-color: var(--color-grey);
   overflow: hidden;
 
-  &:hover {
-    cursor: pointer;
-  }
-
   display: flex;
   flex-direction: row;
 
   .month {
-    height: 15%;
+    height: 5%;
   }
 
   .agenda {
@@ -120,22 +51,6 @@ const BerandaContainer = styled.div`
     width: 70%;
     min-height: 100%;
     padding: 2rem;
-
-    .agenda-list {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      max-width: 100%;
-      max-height: 70%;
-      justify-content: space-between;
-      overflow: scroll;
-
-      .agenda-item {
-        margin-top: 1rem;
-        margin-right: 1rem;
-        flex-basis: 30%;
-      }
-    }
   }
 
   .sidebar {
