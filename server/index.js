@@ -8,10 +8,11 @@ import AgendaRoute from "./routes/Agenda.js"
 
 const app = express();
 
-app.use("/agenda", AgendaRoute);
-
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+
+app.use("/agenda", AgendaRoute);
+
 app.use(cors());
 
 dotenv.config(); // Access to Environment variables

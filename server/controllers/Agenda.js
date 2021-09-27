@@ -7,13 +7,25 @@ export const getAgenda = async (req, res) => {
 
     res.status(200).json(agendaMessage);
   } catch (error) {
+    res.send("Gagal")
     res.status(404).json({ message: error.message });
   }
 };
 
 export const createAgenda = async (req, res) => {
+  console.log(req.body);
   const agenda = req.body;
-  const newAgenda = new AgendaMessage(agenda);
+  const newAgenda = new AgendaMessage(
+    {
+      title: req.body.title,
+      mahasiswa: req.body.mahasiswa,
+      dosbing: req.body.dosbing,
+      category: req.body.category,
+      place: req.body.place,
+      media: req.body.media,
+      dateKP: req.body.dateKP,
+    }
+  );
 
   try {
     await newAgenda.save()
@@ -22,3 +34,5 @@ export const createAgenda = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+
