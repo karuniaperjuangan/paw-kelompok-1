@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import RightSidebar from "../components/RightSidebar";
 import AgendaList from "../components/AgendaList/AgendaList";
+import AddButton from "../components/AddButton";
+import Modal from "react-modal";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
@@ -15,14 +17,36 @@ export default function Beranda() {
     tag: "TI",
   });
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = (e) => {
+    e.stopPropagation();
+    setModalIsOpen(false);
+  };
+
   return (
-    <BerandaContainer className="container-beranda">
+    <BerandaContainer id="container-beranda" className="container-beranda">
       <div className="agenda">
         <div className="month">{/* TODO: Add month selector */}</div>
         <div className="agenda-list">
           <AgendaList />
         </div>
-        <div className="add-new-agenda"></div>
+        <div className="add-new-agenda">
+          <AddButton onClick={openModal} />
+          <Modal
+            appElement={document.getElementById("add-button")}
+            parentSelector={() => document.querySelector("#container-beranda")}
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            className="blockModal"
+            overlayClassName="blockModalOverlay">
+            <div className="content-modal"></div>
+          </Modal>
+        </div>
       </div>
       <div className="sidebar">
         <RightSidebar details={details} />
@@ -56,5 +80,57 @@ const BerandaContainer = styled.div`
   .sidebar {
     width: 30%;
     min-height: 100%;
+  }
+
+  .blockModal {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    right: auto;
+    bottom: auto;
+    margin-left: -40vw;
+    margin-top: -35vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    outline: none;
+    width: 80%;
+    height: 70%;
+    position: relative;
+    border-radius: 2rem;
+  }
+
+  .blockModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity 200ms ease-in-out;
+    opacity: 0;
+  }
+
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .content-modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 200ms ease-in-out;
+    background-color: var(--color-white);
   }
 `;

@@ -30,6 +30,7 @@ const AgendaCardContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1rem;
   margin-right: 1rem;
+  cursor: pointer;
 
   .details {
     margin-top: 1.5rem;
@@ -37,5 +38,6 @@ const AgendaCardContainer = styled.div`
     flex-grow: 1;
     align-items: flex-end;
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
