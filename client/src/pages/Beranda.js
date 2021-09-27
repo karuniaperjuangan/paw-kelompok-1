@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import LeftSidebar from "../components/LeftSidebar";
+import RightSidebar from "../components/RightSidebar";
+import AgendaCard from "../components/AgendaCard";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
@@ -11,13 +12,85 @@ export default function Beranda() {
     place: "Tempat/Perusahaan KP",
     media: "Link Meeting Seminar KP",
     dateKP: "13:00, 2 Desember 2021",
+    tag: "TI",
   });
 
   return (
     <BerandaContainer className="container-beranda">
-      <div className="agenda"></div>
+      <div className="agenda">
+        <div className="month">{/* TODO: Add month selector */}</div>
+        <div className="agenda-list">
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TI"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TB"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit."
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+          <div className="agenda-item">
+            <AgendaCard
+              title="Lorem Ipsum dolor sit amet, consectetur adipiscing elit"
+              prodi="TE"
+            />
+          </div>
+        </div>
+        <div className="add-new-agenda"></div>
+      </div>
       <div className="sidebar">
-        <LeftSidebar details={details}/>
+        <RightSidebar details={details} />
       </div>
     </BerandaContainer>
   );
@@ -28,31 +101,45 @@ const BerandaContainer = styled.div`
   height: calc(100vh - 3rem);
   width: 100%;
   background-color: var(--color-grey);
-  padding: 0rem 0rem 0rem 5rem;
   overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   display: flex;
   flex-direction: row;
 
+  .month {
+    height: 15%;
+  }
+
   .agenda {
     display: flex;
+    flex-direction: column;
     width: 70%;
     min-height: 100%;
+    padding: 2rem;
+
+    .agenda-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 100%;
+      max-height: 70%;
+      justify-content: space-between;
+      overflow: scroll;
+
+      .agenda-item {
+        margin-top: 1rem;
+        margin-right: 1rem;
+        flex-basis: 30%;
+      }
+    }
   }
 
   .sidebar {
     width: 30%;
     min-height: 100%;
-  }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .container-beranda::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .container-beranda {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
   }
 `;
