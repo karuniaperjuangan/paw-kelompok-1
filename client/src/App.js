@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./components/Navbar";
+import GlobalStyles from "./GlobalStyle";
+import { BrowserRouter as Router } from "react-router-dom";
+import Beranda from "./pages/Beranda";
 
 export default function App() {
   return (
-    <div>
-      <h1>TESTING FRONTEND</h1>
-    </div>
-  )
+    <Router>
+      <GlobalStyles />
+      <Navbar />
+      <Beranda />
+    </Router>
+  );
 }

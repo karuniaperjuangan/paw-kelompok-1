@@ -6,8 +6,8 @@ const agendaSchema = mongoose.Schema({
     required: true,
   },
   body: String,
-  creator: {
-    type: String,
+  mahasiswa: {
+    type: [String],
     required: true,
   },
   dosbing: [String],
