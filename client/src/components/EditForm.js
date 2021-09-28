@@ -28,7 +28,8 @@ export default function EditForm(props) {
 
   const handleSubmit = (event) => {
     try {
-      dispatch(updateAgenda(props.details._id, agendaData));
+      let result = dispatch(updateAgenda(props.details._id, agendaData));
+      setTimeout(window.location.reload(), 2000);
     } catch (error) {
       console.log(error);
     }
@@ -175,7 +176,7 @@ export default function EditForm(props) {
           />
           <div className="button-container">
             <OutlineButton onClick={props.closeModal}>Cancel</OutlineButton>
-            <Button type="submit" onClick={handleSubmit}>
+            <Button type="button" onClick={handleSubmit}>
               Submit
             </Button>
           </div>
