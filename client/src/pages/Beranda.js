@@ -5,14 +5,15 @@ import AgendaList from "../components/AgendaList/AgendaList";
 import AddButton from "../components/AddButton";
 import Modal from "react-modal";
 import Form from "../components/Form";
+import EditForm from "../components/EditForm";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
-    _id:"",
+    _id: "",
     title: "",
     body: "",
-    mahasiswaList: [],
-    dosbingList: [],
+    mahasiswa: [],
+    dosbing: [],
     place: "",
     media: "",
     dateKP: "",
@@ -20,6 +21,7 @@ export default function Beranda() {
   });
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -30,13 +32,21 @@ export default function Beranda() {
     setModalIsOpen(false);
   };
 
+  const openEditModal = () => {
+    setEditModalIsOpen(true);
+  };
+
+  const closeEditModal = (e) => {
+    e.stopPropagation();
+    setEditModalIsOpen(false);
+  };
 
   return (
     <BerandaContainer id="container-beranda" className="container-beranda">
       <div className="agenda">
         <div className="month">{/* TODO: Add month selector */}</div>
         <div className="agenda-list">
-          <AgendaList detail={details} setDetails={setDetails}/>
+          <AgendaList detail={details} setDetails={setDetails} />
         </div>
         <div className="add-new-agenda">
           <AddButton onClick={openModal} />
@@ -48,13 +58,32 @@ export default function Beranda() {
             className="blockModal"
             overlayClassName="blockModalOverlay">
             <div className="content-modal">
-              <Form details={details} closeModal={closeModal} />
+              <Form
+                details={details}
+                setDetails={setDetails}
+                closeModal={closeModal}
+              />
             </div>
           </Modal>
         </div>
       </div>
       <div className="sidebar">
-        <RightSidebar details={details} />
+        <RightSidebar details={details} setDetails={setDetails} openEditModal={openEditModal}/>
+        <Modal
+          appElement={document.getElementById("add-button")}
+          parentSelector={() => document.querySelector("#container-beranda")}
+          isOpen={editModalIsOpen}
+          onRequestClose={closeEditModal}
+          className="blockModal"
+          overlayClassName="blockModalOverlay">
+          <div className="content-modal">
+            <EditForm
+              details={details}
+              setDetails={setDetails}
+              closeModal={closeEditModal}
+            />
+          </div>
+        </Modal>
       </div>
     </BerandaContainer>
   );

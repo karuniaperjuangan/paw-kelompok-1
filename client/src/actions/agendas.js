@@ -28,3 +28,12 @@ export const deleteAgenda = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateAgenda = (id, agenda) => async (dispatch) => {
+  try {
+    const { data } = await api.updateAgenda(id, agenda);
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

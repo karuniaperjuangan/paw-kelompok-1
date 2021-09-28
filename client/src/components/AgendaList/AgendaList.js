@@ -10,11 +10,11 @@ export default function AgendaList({ details, setDetails }) {
     (item) => {
       setDetails({
         ...details,
-        id: item._id,
+        _id: item._id,
         title: item.title,
         body: item.body,
-        mahasiswaList: item.mahasiswa,
-        dosbingList: item.dosbing,
+        mahasiswa: item.mahasiswa,
+        dosbing: item.dosbing,
         place: item.place,
         media: item.media,
         dateKP: item.dateKP,

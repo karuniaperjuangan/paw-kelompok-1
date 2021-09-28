@@ -4,9 +4,23 @@ import { Button } from "./Button";
 import { useDispatch } from "react-redux";
 import { deleteAgenda } from "../actions/agendas.js";
 
-export default function RightSidebar({ details, setDetails }) {
-  console.log(details);
+export default function RightSidebar({ details, setDetails, openEditModal }) {
   const dispatch = useDispatch();
+
+  const clear = () => {
+    setDetails({
+      _id: "",
+      title: "",
+      body: "",
+      mahasiswa: [],
+      dosbing: [],
+      place: "",
+      media: "",
+      dateKP: "",
+      category: "",
+    });
+  };
+
   return (
     <SidebarContainer>
       <p>Detail Seminar KP</p>
@@ -17,7 +31,7 @@ export default function RightSidebar({ details, setDetails }) {
       <div className="mahasiswa">
         <p className="heading text-bold">Oleh:</p>
         <ul className="list-mahasiswa">
-          {details.mahasiswaList.map((mahasiswa, index) => {
+          {details.mahasiswa.map((mahasiswa, index) => {
             return <li key={index}>{mahasiswa}</li>;
           })}
         </ul>
@@ -30,7 +44,7 @@ export default function RightSidebar({ details, setDetails }) {
       <div className="dosbing">
         <p className="heading text-bold">Dosen Pembimbing:</p>
         <ul className="list-dosbing">
-          {details.dosbingList.map((dosbing, index) => {
+          {details.dosbing.map((dosbing, index) => {
             return <li key={index}>{dosbing}</li>;
           })}
         </ul>
@@ -51,8 +65,15 @@ export default function RightSidebar({ details, setDetails }) {
       <div className="button-container">
         {details.title.length > 0 ? (
           <>
-            <Button backgroundColor="var(--color-green)">Edit</Button>
-            <Button backgroundColor="var(--color-red)" onClick={() => dispatch(deleteAgenda(details.id))}>Delete</Button>
+            <Button backgroundColor="var(--color-green)" onClick={openEditModal}>Edit</Button>
+            <Button
+              backgroundColor="var(--color-red)"
+              onClick={() => dispatch(deleteAgenda(details._id))}>
+              Delete
+            </Button>
+            <Button backgroundColor="var(--color-red)" onClick={clear}>
+              Clear Selection
+            </Button>
           </>
         ) : (
           <Button>Ketuk kartu agenda untuk melihat detail</Button>

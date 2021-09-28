@@ -3,20 +3,20 @@ import Datetime from "react-datetime";
 import styled from "styled-components";
 import "react-datetime/css/react-datetime.css";
 import { useDispatch } from "react-redux";
-import { createAgenda } from "../actions/agendas.js";
+import { updateAgenda } from "../actions/agendas.js";
 
 import { Button, OutlineButton } from "./Button";
 
-export default function Form(props) {
+export default function EditForm(props) {
   const [agendaData, setAgendaData] = useState({
-    title: "",
-    body: "",
-    mahasiswa: [],
-    dosbing: [],
-    place: "",
-    media: "",
-    dateKP: "",
-    category: "",
+    title: props.details.title,
+    body: props.details.body,
+    mahasiswa: props.details.mahasiswa,
+    dosbing: props.details.dosbing,
+    place: props.details.place,
+    media: props.details.media,
+    dateKP: props.details.dateKP,
+    category: props.details.category,
   });
 
   const dispatch = useDispatch();
@@ -28,8 +28,7 @@ export default function Form(props) {
 
   const handleSubmit = (event) => {
     try {
-      event.preventDefault();
-      dispatch(createAgenda(agendaData));
+      dispatch(updateAgenda(props.details._id, agendaData));
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +49,7 @@ export default function Form(props) {
 
   return (
     <FormContainer>
-      <h3>Add Agenda Seminar</h3>
+      <h3>Edit Agenda Seminar</h3>
       <div className="form-section">
         <form autoSubmit="off" className="agenda-form" onSubmit={handleSubmit}>
           <label htmlFor="title" className="text-bold">
@@ -176,7 +175,7 @@ export default function Form(props) {
           />
           <div className="button-container">
             <OutlineButton onClick={props.closeModal}>Cancel</OutlineButton>
-            <Button type="button" onClick={handleSubmit}>
+            <Button type="submit" onClick={handleSubmit}>
               Submit
             </Button>
           </div>
