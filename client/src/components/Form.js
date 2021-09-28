@@ -30,6 +30,7 @@ export default function Form(props) {
     try {
       event.preventDefault();
       dispatch(createAgenda(agendaData));
+      props.setModalIsOpen(false);
     } catch (error) {
       console.log(error);
     }

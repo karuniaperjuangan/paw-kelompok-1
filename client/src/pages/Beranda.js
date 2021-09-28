@@ -62,6 +62,7 @@ export default function Beranda() {
                 details={details}
                 setDetails={setDetails}
                 closeModal={closeModal}
+                setModalIsOpen={setModalIsOpen}
               />
             </div>
           </Modal>
@@ -80,6 +81,7 @@ export default function Beranda() {
             <EditForm
               details={details}
               setDetails={setDetails}
+              setEditModalIsOpen={setEditModalIsOpen}
               closeModal={closeEditModal}
             />
           </div>

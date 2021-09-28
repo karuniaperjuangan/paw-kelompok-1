@@ -13,9 +13,6 @@ export default function Navbar() {
           <li>
             <Link>Beranda</Link>
           </li>
-          <li>
-            <Link>Agenda Tersimpan</Link>
-          </li>
         </ul>
       </div>
     </NavbarContainer>
