@@ -2,6 +2,8 @@
 
 ## Tugas CRUD API  
 
+### Tugas kedua ada di branch tugas-2
+
 **Kapecal**  
 Kapecal adalah web application yang bertujuan untuk membantu mahasiswa DTETI FT UGM untuk mengetahui jadwal seminar KP yang akan diadakan. Kapecal diharapkan mampu membantu penyebaranluasan informasi seminar KP yang saat ini sebatas _broadcast_ di grup angkatan dan masih tersebar.  
   
