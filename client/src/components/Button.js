@@ -6,10 +6,11 @@ export const Button = styled.button`
     props.backgroundColor ? props.backgroundColor : "var(--color-blue)"};
   margin: 0.5em 1em;
   border: 1px solid
-    ${(props) => (props.border ? props.border : "var(--color-blue)")};
+    ${(props) => (props.backgroundColor ? props.backgroundColor : "var(--color-blue)")};
   font-weight: bold;
   color: ${(props) => (props.color ? props.color : "var(--color-white)")};
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 export const OutlineButton = styled.button`
@@ -21,4 +22,5 @@ export const OutlineButton = styled.button`
   font-weight: bold;
   color: ${(props) => (props.border ? props.border : "var(--color-blue)")};
   border-radius: 8px;
+  cursor: pointer;
 `;

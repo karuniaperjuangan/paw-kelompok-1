@@ -8,14 +8,15 @@ import Form from "../components/Form";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
-    title: "Pemanfaatan Air sebagai Energi Terbarukan di Desa Sukaair",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    mahasiswaList: ["Mahasiswa 1", "Mahasiswa 2"],
-    dosbingList: ["Dosbing 1", "Dosbing 2"],
-    place: "Tempat/Perusahaan KP",
-    media: "Link Meeting Seminar KP",
-    dateKP: "02/12/2021 13:32",
-    category: "TI",
+    _id:"",
+    title: "",
+    body: "",
+    mahasiswaList: [],
+    dosbingList: [],
+    place: "",
+    media: "",
+    dateKP: "",
+    category: "",
   });
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -29,12 +30,13 @@ export default function Beranda() {
     setModalIsOpen(false);
   };
 
+
   return (
     <BerandaContainer id="container-beranda" className="container-beranda">
       <div className="agenda">
         <div className="month">{/* TODO: Add month selector */}</div>
         <div className="agenda-list">
-          <AgendaList />
+          <AgendaList detail={details} setDetails={setDetails}/>
         </div>
         <div className="add-new-agenda">
           <AddButton onClick={openModal} />

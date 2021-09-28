@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Button } from "./Button";
+import { useDispatch } from "react-redux";
+import { deleteAgenda } from "../actions/agendas.js";
 
-export default function RightSidebar({details}) {
+export default function RightSidebar({ details, setDetails }) {
+  console.log(details);
+  const dispatch = useDispatch();
   return (
     <SidebarContainer>
       <p>Detail Seminar KP</p>
@@ -42,6 +47,17 @@ export default function RightSidebar({details}) {
         <p className="heading text-bold">Waktu:</p>
         <p>{details.dateKP}</p>
       </div>
+
+      <div className="button-container">
+        {details.title.length > 0 ? (
+          <>
+            <Button backgroundColor="var(--color-green)">Edit</Button>
+            <Button backgroundColor="var(--color-red)" onClick={() => dispatch(deleteAgenda(details.id))}>Delete</Button>
+          </>
+        ) : (
+          <Button>Ketuk kartu agenda untuk melihat detail</Button>
+        )}
+      </div>
     </SidebarContainer>
   );
 }
@@ -81,6 +97,6 @@ const SidebarContainer = styled.div`
   }
 
   .deskripsi-seminar {
-    text-align: justify;  
+    text-align: justify;
   }
 `;

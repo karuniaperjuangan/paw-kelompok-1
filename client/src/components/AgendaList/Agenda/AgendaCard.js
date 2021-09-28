@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Tag } from "../../Tag";
 
+
 export default function AgendaCard(props) {
   return (
     <AgendaCardContainer>

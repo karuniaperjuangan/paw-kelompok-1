@@ -56,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
     --color-green: #34DD8C;
     --color-purple: #9334DD;  
     --color-muted: #C2C2C2;
+    --color-red: #FF5C58;
   }
 
   /* Utility */

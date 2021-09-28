@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import AgendaCard from "./Agenda/AgendaCard";
 import { useSelector } from "react-redux";
 
-export default function AgendaList() {
+export default function AgendaList({ details, setDetails }) {
   const agendas = useSelector((state) => state.agendas);
-  console.log(agendas);
+
+  const handleClick = useCallback(
+    (item) => {
+      setDetails({
+        ...details,
+        id: item._id,
+        title: item.title,
+        body: item.body,
+        mahasiswaList: item.mahasiswa,
+        dosbingList: item.dosbing,
+        place: item.place,
+        media: item.media,
+        dateKP: item.dateKP,
+        category: item.category,
+      });
+    },
+    [setDetails]
+  );
 
   let agendaItem = agendas.map((item) => {
-    return(
-    <div key={item._id} className="agenda-item">
-      <AgendaCard title={item.title} category={item.category} dateKP={new Date(item.dateKP).toDateString()}/>
-    </div>);
+    return (
+      <div
+        data={item}
+        key={item._id}
+        onClick={() => handleClick(item)}
+        className="agenda-item">
+        <AgendaCard
+          title={item.title}
+          category={item.category}
+          dateKP={new Date(item.dateKP).toDateString()}
+        />
+      </div>
+    );
   });
   return <AgendaListContainer>{agendaItem}</AgendaListContainer>;
 }

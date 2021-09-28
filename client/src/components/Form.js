@@ -2,11 +2,25 @@ import React, { useState, useEffect } from "react";
 import Datetime from "react-datetime";
 import styled from "styled-components";
 import "react-datetime/css/react-datetime.css";
+import { useDispatch } from "react-redux";
+import { createAgenda } from "../actions/agendas.js";
+
 import { Button, OutlineButton } from "./Button";
 
 export default function Form(props) {
-  const [agendaData, setAgendaData] = useState(props.details);
+  const [agendaData, setAgendaData] = useState({
+    title: "",
+    body: "",
+    mahasiswaList: [],
+    dosbingList: [],
+    place: "",
+    media: "",
+    dateKP: "",
+    category: "",
+  });
   // console.log(props.details);
+
+  const dispatch = useDispatch();
 
   const formatDate = (string) => {
     var options = { year: "numeric", month: "long", day: "numeric" };
@@ -16,14 +30,28 @@ export default function Form(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(agendaData);
+    dispatch(createAgenda(agendaData));
+    clear();
   };
-  // console.log(new Date(agendaData.dateKP));
+
+  const clear = () => {
+    setAgendaData({
+      title: "",
+      body: "",
+      mahasiswaList: [],
+      dosbingList: [],
+      place: "",
+      media: "",
+      dateKP: "",
+      category: "",
+    })
+  }
 
   return (
     <FormContainer>
       <h3>Add/Edit Agenda Seminar</h3>
       <div className="form-section">
-        <form autoSubmit="off" className="agenda-form">
+        <form autoSubmit="off" className="agenda-form" onSubmit={handleSubmit}>
           <label htmlFor="title" className="text-bold">
             Judul
           </label>
@@ -147,7 +175,7 @@ export default function Form(props) {
           <div className="button-container">
             <OutlineButton onClick={props.closeModal}>Cancel</OutlineButton>
             <Button type="button" onClick={handleSubmit}>
-              sdsd
+              Submit
             </Button>
           </div>
         </form>

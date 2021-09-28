@@ -3,7 +3,9 @@ export default (agendas = [], action) => {
     case "FETCH_ALL":
       return action.payload;
     case "CREATE":
-      return agendas;
+      return [...agendas, action.payload];
+    case "DELETE":
+      return agendas.filter((agendas) => agendas._id != action.payload)
     default:
       return agendas
   }
