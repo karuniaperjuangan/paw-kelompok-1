@@ -11,9 +11,9 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.use("/agenda", AgendaRoute);
 
 app.use(cors());
+app.use("/agenda", AgendaRoute);
 
 dotenv.config(); // Access to Environment variables
 const CONN_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASS}@paw-kapecal.slmpc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;

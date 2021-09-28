@@ -14,7 +14,7 @@ export default function Beranda() {
     dosbingList: ["Dosbing 1", "Dosbing 2"],
     place: "Tempat/Perusahaan KP",
     media: "Link Meeting Seminar KP",
-    dateKP: "02/12/2021",
+    dateKP: "02/12/2021 13:32",
     category: "TI",
   });
 
@@ -46,7 +46,7 @@ export default function Beranda() {
             className="blockModal"
             overlayClassName="blockModalOverlay">
             <div className="content-modal">
-              <Form details={details}/>
+              <Form details={details} closeModal={closeModal} />
             </div>
           </Modal>
         </div>
@@ -116,6 +116,14 @@ const BerandaContainer = styled.div`
     transition: opacity 200ms ease-in-out;
     opacity: 0;
     z-index: 9999;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .ReactModal__Overlay--after-open {

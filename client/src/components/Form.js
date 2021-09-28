@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
+import Datetime from "react-datetime";
 import styled from "styled-components";
+import "react-datetime/css/react-datetime.css";
+import { Button, OutlineButton } from "./Button";
 
 export default function Form(props) {
   const [agendaData, setAgendaData] = useState(props.details);
-  const handleSubmit = () => {};
   // console.log(props.details);
 
   const formatDate = (string) => {
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(string).toLocaleDateString(['id'],options);
-}
+    var options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(string).toLocaleDateString(["id"], options);
+  };
 
-console.log(new Date(agendaData.dateKP))
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(agendaData);
+  };
+  // console.log(new Date(agendaData.dateKP));
 
   return (
     <FormContainer>
       <h3>Add/Edit Agenda Seminar</h3>
       <div className="form-section">
-        <form autoSubmit="off" className="agenda-form" onSubmit={handleSubmit}>
+        <form autoSubmit="off" className="agenda-form">
           <label htmlFor="title" className="text-bold">
             Judul
           </label>
@@ -29,7 +35,9 @@ console.log(new Date(agendaData.dateKP))
             value={agendaData.title}
             required="required"
             aria-required="true"
-            onChange={(e) => setAgendaData({...agendaData, title: e.target.value})}
+            onChange={(e) =>
+              setAgendaData({ ...agendaData, title: e.target.value })
+            }
           />
 
           <label htmlFor="body" className="text-bold">
@@ -41,7 +49,9 @@ console.log(new Date(agendaData.dateKP))
             id="body"
             value={agendaData.body}
             placeholder="Masukkan deskripsi singkat mengenai seminar KP-mu"
-            onChange={(e) => setAgendaData({...agendaData, body: e.target.value})}
+            onChange={(e) =>
+              setAgendaData({ ...agendaData, body: e.target.value })
+            }
           />
 
           <label htmlFor="mahasiswa" className="text-bold">
@@ -51,11 +61,16 @@ console.log(new Date(agendaData.dateKP))
             type="text"
             name="mahasiswa"
             id="mahasiswa"
-            value={agendaData.mahasiswa}
-            placeholder="Masukkan nama-nama mahasiswa yang melakukan seminar KP"
+            value={agendaData.mahasiswaList}
+            placeholder="Masukkan nama-nama mahasiswa yang melakukan seminar KP. Pisah dengan koma."
             required="required"
             aria-required="true"
-            onChange={(e) => setAgendaData({...agendaData, mahasiswa: e.target.value})}
+            onChange={(e) =>
+              setAgendaData({
+                ...agendaData,
+                mahasiswaList: e.target.value.split(","),
+              })
+            }
           />
 
           <label htmlFor="dosbing" className="text-bold">
@@ -65,9 +80,14 @@ console.log(new Date(agendaData.dateKP))
             type="text"
             name="dosbing"
             id="dosbing"
-            value={agendaData.dosbing}
-            placeholder="Masukkan dosen pembimbing seminar KP"
-            onChange={(e) => setAgendaData({...agendaData, dosbing: e.target.value})}
+            value={agendaData.dosbingList}
+            placeholder="Masukkan dosen pembimbing seminar KP. Pisah dengan koma."
+            onChange={(e) =>
+              setAgendaData({
+                ...agendaData,
+                dosbingList: e.target.value.split(","),
+              })
+            }
           />
 
           <label htmlFor="place" className="text-bold">
@@ -79,7 +99,9 @@ console.log(new Date(agendaData.dateKP))
             id="place"
             value={agendaData.place}
             placeholder="Masukkan tempatmu melaksanakan KP"
-            onChange={(e) => setAgendaData({...agendaData, place: e.target.value})}
+            onChange={(e) =>
+              setAgendaData({ ...agendaData, place: e.target.value })
+            }
           />
 
           <label htmlFor="media" className="text-bold">
@@ -93,21 +115,41 @@ console.log(new Date(agendaData.dateKP))
             placeholder="Masukkan media pelaksanaan KP (link/offline)"
             required="required"
             aria-required="true"
-            onChange={(e) => setAgendaData({...agendaData, media: e.target.value})}
+            onChange={(e) =>
+              setAgendaData({ ...agendaData, media: e.target.value })
+            }
+          />
+
+          <label htmlFor="category" className="text-bold">
+            Prodi
+          </label>
+          <input
+            type="text"
+            name="category"
+            id="category"
+            value={agendaData.category}
+            placeholder="Masukkan program studi kamu"
+            required="required"
+            aria-required="true"
+            onChange={(e) =>
+              setAgendaData({ ...agendaData, category: e.target.value })
+            }
           />
 
           <label htmlFor="date" className="text-bold">
             Waktu
           </label>
-          <input
-            type="datetime-local"
-            name="date"
-            id="date"
-            // value={formatDate(agendaData.dateKP)}
-            required="required"
-            aria-required="true"
-            onChange={(e) => setAgendaData({...agendaData, dateKP: e.target.value})}
+          <Datetime
+            dateFormat="DD-MMM-YYYY"
+            value={new Date(agendaData.dateKP)}
+            onChange={(e) => setAgendaData({ ...agendaData, dateKP: e._d })}
           />
+          <div className="button-container">
+            <OutlineButton onClick={props.closeModal}>Cancel</OutlineButton>
+            <Button type="button" onClick={handleSubmit}>
+              sdsd
+            </Button>
+          </div>
         </form>
       </div>
     </FormContainer>
@@ -118,7 +160,6 @@ const FormContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 50%;
   background-color: var(--color-white);
   border-radius: 1rem;
@@ -159,6 +200,12 @@ const FormContainer = styled.div`
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
     }
   }
 `;
