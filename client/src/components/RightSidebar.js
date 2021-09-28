@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function RightSidebar({details}) {
-  console.log(details);
   return (
     <SidebarContainer>
       <p>Detail Seminar KP</p>

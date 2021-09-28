@@ -10,7 +10,7 @@ export default function AgendaCard(props) {
       </div>
       <div className="details">
         <div className="tag">
-          <Tag prodi={props.prodi}>{props.prodi}</Tag>
+          <Tag category={props.category}>{props.category}</Tag>
         </div>
         <div className="dateKP">{props.dateKP}</div>
       </div>

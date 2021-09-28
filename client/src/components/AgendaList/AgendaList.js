@@ -10,7 +10,7 @@ export default function AgendaList() {
   let agendaItem = agendas.map((item) => {
     return(
     <div key={item._id} className="agenda-item">
-      <AgendaCard title={item.title} prodi={item.category} dateKP={new Date(item.dateKP).toDateString()}/>
+      <AgendaCard title={item.title} category={item.category} dateKP={new Date(item.dateKP).toDateString()}/>
     </div>);
   });
   return <AgendaListContainer>{agendaItem}</AgendaListContainer>;

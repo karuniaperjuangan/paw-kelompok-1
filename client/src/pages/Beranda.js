@@ -4,6 +4,7 @@ import RightSidebar from "../components/RightSidebar";
 import AgendaList from "../components/AgendaList/AgendaList";
 import AddButton from "../components/AddButton";
 import Modal from "react-modal";
+import Form from "../components/Form";
 
 export default function Beranda() {
   const [details, setDetails] = useState({
@@ -13,8 +14,8 @@ export default function Beranda() {
     dosbingList: ["Dosbing 1", "Dosbing 2"],
     place: "Tempat/Perusahaan KP",
     media: "Link Meeting Seminar KP",
-    dateKP: "13:00, 2 Desember 2021",
-    tag: "TI",
+    dateKP: "02/12/2021",
+    category: "TI",
   });
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -44,7 +45,9 @@ export default function Beranda() {
             onRequestClose={closeModal}
             className="blockModal"
             overlayClassName="blockModalOverlay">
-            <div className="content-modal"></div>
+            <div className="content-modal">
+              <Form details={details}/>
+            </div>
           </Modal>
         </div>
       </div>
@@ -84,7 +87,7 @@ const BerandaContainer = styled.div`
 
   .blockModal {
     position: fixed;
-    top: 50vh;
+    top: 35vh;
     left: 50vw;
     right: auto;
     bottom: auto;
@@ -94,9 +97,10 @@ const BerandaContainer = styled.div`
     -webkit-overflow-scrolling: touch;
     outline: none;
     width: 80%;
-    height: 70%;
+    height: 100%;
     position: relative;
     border-radius: 2rem;
+    transition: opacity 200ms ease-in-out;
   }
 
   .blockModalOverlay {
@@ -111,6 +115,7 @@ const BerandaContainer = styled.div`
     background-color: rgba(0, 0, 0, 0.6);
     transition: opacity 200ms ease-in-out;
     opacity: 0;
+    z-index: 9999;
   }
 
   .ReactModal__Overlay--after-open {
@@ -131,6 +136,5 @@ const BerandaContainer = styled.div`
     justify-content: center;
     align-items: center;
     transition: opacity 200ms ease-in-out;
-    background-color: var(--color-white);
   }
 `;

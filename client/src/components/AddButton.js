@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
 
 export default function AddButton(props) {
   return (

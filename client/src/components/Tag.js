@@ -9,19 +9,19 @@ export const Tag = styled.button`
   padding: 0.25em 1em;
 
   ${(props) =>
-    props.prodi === "TE" &&
+    props.category === "TE" &&
     css`
       background: var(--color-blue);
   `}
 
   ${(props) =>
-  props.prodi === "TI" &&
+  props.category === "TI" &&
   css`
     background: var(--color-green);
   `}
 
   ${(props) =>
-  props.prodi === "TB" &&
+  props.category === "TB" &&
   css`
     background: var(--color-purple);
   `}
