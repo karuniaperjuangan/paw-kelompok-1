@@ -41,4 +41,15 @@ const AgendaCardContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
+
+  @media screen and (max-width: 960px) {
+    .details {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
 `;

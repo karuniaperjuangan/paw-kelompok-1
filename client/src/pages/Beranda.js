@@ -178,4 +178,10 @@ const BerandaContainer = styled.div`
     align-items: center;
     transition: opacity 200ms ease-in-out;
   }
+
+  @media screen and (max-width: 960px) {
+    .agenda {
+      overflow: scroll;
+    }
+  }
 `;
