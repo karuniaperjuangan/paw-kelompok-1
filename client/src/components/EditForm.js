@@ -198,6 +198,7 @@ const FormContainer = styled.div`
 
   h3 {
     text-align: center;
+    font-size: 19px;
   }
 
   .form-section {
@@ -220,7 +221,7 @@ const FormContainer = styled.div`
 
     label {
       display: inline-block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.1rem;
     }
 
     textarea {
@@ -236,6 +237,52 @@ const FormContainer = styled.div`
       display: flex;
       justify-content: flex-end;
       flex-direction: row;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: 95%;
+    padding: 0.5rem;
+
+    .form-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+  
+    form {
+      width: 100%;
+      
+      input {
+        height: 30px;
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+      }
+  
+      label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        font-size:13px;
+      }
+  
+      textarea {
+        height: 50px;
+        display: block;
+        resize: none;
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+      }
     }
   }
 `;
