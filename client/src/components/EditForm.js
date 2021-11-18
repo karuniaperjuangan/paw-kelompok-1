@@ -187,6 +187,7 @@ export default function EditForm(props) {
 }
 
 const FormContainer = styled.div`
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;

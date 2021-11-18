@@ -188,6 +188,7 @@ export default function Form(props) {
 }
 
 const FormContainer = styled.div`
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
