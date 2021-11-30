@@ -4,6 +4,7 @@ import GlobalStyles from "./GlobalStyle";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Beranda from "./pages/Beranda";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 import { useDispatch } from "react-redux";
 import { getAgendas } from "./actions/agendas";
@@ -21,6 +22,7 @@ export default function App() {
       <Switch>
         <Route path='/' exact component={Beranda} />
         <Route path='/contact' exact component={Contact} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </Router>
   );
