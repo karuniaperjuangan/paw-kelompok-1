@@ -50,6 +50,11 @@ export default function RightSidebar({ details, setDetails, openEditModal }) {
         </ul>
       </div>
 
+      <div className="place">
+        <p className="heading text-bold">Tempat KP:</p>
+        <p>{details.place}</p>
+      </div>
+
       <div className="media">
         <p className="heading text-bold">Media:</p>
         <a href={details.media} target="_blank" rel="noopener noreferrer">
