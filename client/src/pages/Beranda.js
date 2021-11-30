@@ -111,6 +111,7 @@ const BerandaContainer = styled.div`
     width: 70%;
     min-height: 100%;
     padding: 2rem;
+    overflow-y: auto;
   }
 
   .sidebar {
